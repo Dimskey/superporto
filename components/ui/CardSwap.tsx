@@ -11,6 +11,7 @@ import React, {
   useRef,
 } from "react";
 import gsap from "gsap";
+import Image from "next/image";
 
 export interface CardSwapProps {
   width?: number | string;
@@ -22,7 +23,7 @@ export interface CardSwapProps {
   onCardClick?: (idx: number) => void;
   skewAmount?: number;
   easing?: "linear" | "elastic";
-  containerClassName?: string; // 👉 tambahan
+  containerClassName?: string;
   children: ReactNode;
 }
 

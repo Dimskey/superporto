@@ -99,7 +99,7 @@ export const stickyScrollContent = [
 export const clientImages = [
   {
     id: 1,
-    image: "ciscoc.png",
+    image: "/ciscoc.png",
     name: "Client 1",
   },
   {

@@ -80,7 +80,7 @@ const Hero = () => {
             handle="dimas_budi"
             status="Online"
             contactText="Contact Me"
-            avatarUrl="profile.png"
+            avatarUrl="/profile.png"
             showUserInfo={true}
             enableTilt={true}
             enableMobileTilt={false}

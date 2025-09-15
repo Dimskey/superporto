@@ -36,7 +36,7 @@ const TechStack = () => {
               My Awesome <span className="text-purple">Tech Stack</span>
             </h1>
             <p className="max-w-md text-lg text-gray-300">
-              Here's a snapshot of the technologies and tools I excel in.
+              Here&apos;s a snapshot of the technologies and tools I excel in.
             </p>
           </div>
 
@@ -50,7 +50,11 @@ const TechStack = () => {
                 verticalDistance={50}
               >
                 <Card>
-                  <FeatureCard title="Frontend" icon={FaMagic} image="fe.png" />
+                  <FeatureCard
+                    title="Frontend"
+                    icon={FaMagic}
+                    image="/fe.png"
+                  />
                 </Card>
                 <Card>
                   <FeatureCard
@@ -85,7 +89,7 @@ const TechStack = () => {
               My Awesome <span className="text-purple">Tech Stack</span>
             </h1>
             <p className="mx-auto max-w-sm text-base text-gray-300">
-              Here's a snapshot of the technologies and tools I excel in.
+              Here&apos;s a snapshot of the technologies and tools I excel in.
             </p>
           </div>
 

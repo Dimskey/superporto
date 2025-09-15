@@ -1,5 +1,5 @@
 import { FaLocationArrow } from "react-icons/fa6";
-
+import Image from "next/image";
 import { socialMedia } from "@/data";
 import MagicButton from "./MagicButton";
 
@@ -23,7 +23,8 @@ const Footer = () => {
 
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
-          Let's <span className="text-purple">team up</span> and create magic
+          Let&apos;s <span className="text-purple">team up</span> and create
+          magic
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
           Reach out to me on LinkedIn for collaborations, opportunities, or just
@@ -50,7 +51,7 @@ const Footer = () => {
               onClick={() => handleClick(info.id)}
               className="w-10 h-10 flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 cursor-pointer"
             >
-              <img src={info.img} alt="icons" width={20} height={20} />
+              <Image src={info.img} alt="icons" width={20} height={20} />
             </button>
           ))}
         </div>

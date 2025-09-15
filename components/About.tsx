@@ -4,6 +4,7 @@ import { stickyScrollContent } from "@/data";
 import { StickyScroll } from "./ui/sticky-scroll-reveal";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const Grid = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -84,7 +85,7 @@ const Grid = () => {
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              <Image
                 src={selectedImage}
                 alt="Full size"
                 className="w-full h-full object-contain rounded-lg shadow-2xl"

@@ -1,44 +1,47 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-export const InfiniteMovingCards = ({
+type Item = {
+  quote?: string;
+  name: string;
+  title?: string;
+  image?: string;
+};
+
+interface InfiniteMovingCardsProps {
+  items: Item[];
+  direction?: "left" | "right";
+  speed?: "fast" | "normal" | "slow";
+  pauseOnHover?: boolean;
+  className?: string;
+  type?: "text" | "image";
+}
+
+export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
   items,
   direction = "left",
   speed = "fast",
   pauseOnHover = true,
   className,
   type = "text",
-}: {
-  items: {
-    quote?: string;
-    name: string;
-    title?: string;
-    image?: string;
-  }[];
-  direction?: "left" | "right";
-  speed?: "fast" | "normal" | "slow";
-  pauseOnHover?: boolean;
-  className?: string;
-  type?: "text" | "image";
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
+  const [start, setStart] = useState(false);
 
   useEffect(() => {
     addAnimation();
   }, []);
-  const [start, setStart] = useState(false);
+
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
-
       scrollerContent.forEach((item) => {
         const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
+        scrollerRef.current?.appendChild(duplicatedItem);
       });
 
       getDirection();
@@ -46,32 +49,25 @@ export const InfiniteMovingCards = ({
       setStart(true);
     }
   }
+
   const getDirection = () => {
     if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards"
-        );
-      } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse"
-        );
-      }
+      containerRef.current.style.setProperty(
+        "--animation-direction",
+        direction === "left" ? "forwards" : "reverse"
+      );
     }
   };
+
   const getSpeed = () => {
     if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
-      } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
-      }
+      containerRef.current.style.setProperty(
+        "--animation-duration",
+        speed === "fast" ? "20s" : speed === "normal" ? "40s" : "80s"
+      );
     }
   };
+
   return (
     <div
       ref={containerRef}
@@ -97,48 +93,40 @@ export const InfiniteMovingCards = ({
                 ? "w-[280px] h-[200px] p-4"
                 : "w-[90vw] max-w-full p-5 md:p-16 md:w-[60vw]"
             )}
-            style={
-              type === "text"
-                ? {
-                    background: "rgb(4,7,29)",
-                    backgroundColor:
-                      "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-                  }
-                : {
-                    background: "rgb(4,7,29)",
-                    backgroundColor:
-                      "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-                  }
-            }
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+            }}
           >
             {type === "image" ? (
-              // Layout untuk gambar dengan ukuran tetap dan tidak stretch
-              <div className="flex flex-col items-center justify-center  h-full">
-                <img
-                  src={item.image}
+              <div className="flex h-full w-full items-center justify-center">
+                <Image
+                  src={item.image ?? "/placeholder.png"} // fallback bila kosong
                   alt={item.name}
-                  className="max-w-full max-h-full object-fill hover:scale-105 transition-transform duration-300"
+                  width={260}
+                  height={180}
+                  className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300"
                 />
               </div>
             ) : (
-              // Layout untuk text (original)
               <blockquote>
-                <div
-                  aria-hidden="true"
-                  className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-                ></div>
                 <span className="relative z-20 text-sm md:text-lg leading-[1.6] text-white font-normal">
                   {item.quote}
                 </span>
                 <div className="relative z-20 mt-6 flex flex-row items-center">
                   <div className="me-3">
-                    <img src="/profile.svg" alt="profile" />
+                    <Image
+                      src="/profile.svg"
+                      alt="profile"
+                      width={32}
+                      height={32}
+                    />
                   </div>
                   <span className="flex flex-col gap-1">
                     <span className="text-xl font-bold leading-[1.6] text-white">
                       {item.name}
                     </span>
-                    <span className="text-sm leading-[1.6] text-white-200 font-normal">
+                    <span className="text-sm leading-[1.6] text-white/70 font-normal">
                       {item.title}
                     </span>
                   </span>

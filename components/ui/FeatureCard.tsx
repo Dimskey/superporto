@@ -1,5 +1,6 @@
 import React from "react";
 import { IconType } from "react-icons";
+import Image from "next/image";
 
 interface Props {
   title: string;
@@ -24,9 +25,8 @@ export const FeatureCard: React.FC<Props> = ({
         <h1 className="text-sm font-medium">{title}</h1>
       </div>
 
-      {/* Image area */}
-      <div className="flex flex-1 items-center justify-center bg-black">
-        <img src={image} alt={title} className="h-full w-full object-cover" />
+      <div className="relative h-64 w-full">
+        <Image src={image} alt={title} fill className="object-cover" />
       </div>
 
       {/* Description */}
