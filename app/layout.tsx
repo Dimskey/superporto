@@ -7,7 +7,7 @@ import { ThemeProvider } from "./provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "porto Beneran",
+  title: "D'Folio",
   description: "Super Porto",
 };
 
