@@ -12,7 +12,6 @@
   "dependencies": {
     "@react-three/drei": "^9.105.4",
     "@react-three/fiber": "^8.16.2",
-    "@sentry/nextjs": "^10.11.0",
     "@studio-freight/lenis": "^1.0.42",
     "@tabler/icons-react": "^3.1.0",
     "@tsparticles/engine": "^3.9.1",
