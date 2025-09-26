@@ -89,7 +89,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         backdropFilter: "blur(10px)",
         boxShadow:
           "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
-        width: visible ? "40%" : "80%",
+        width: visible ? "40%" : "90%",
         y: 20,
       }}
       transition={{
@@ -132,7 +132,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-white/50 dark:bg-black-100/50 backdrop-blur-md shadow-md z-[-1]"
+              className="absolute inset-0 h-full w-full rounded-full bg-white/40  backdrop-blur-md shadow-md z-[-1]"
             />
           )}
           <span className="relative z-20 flex-row list-item">{item.name}</span>

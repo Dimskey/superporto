@@ -285,7 +285,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 12px 14px;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .pc-user-details {
@@ -340,6 +340,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
 .pc-contact-btn:hover {

@@ -76,7 +76,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   status = "Online",
   contactText = "Contact",
   showUserInfo = true,
-  onContactClick,
+  onContactClick = () => {
+    window.open("https://www.instagram.com/dimasrbs/", "_blank");
+  },
 }) => {
   const [avatarSrc, setAvatarSrc] = useState(avatarUrl);
   const [miniSrc, setMiniSrc] = useState(miniAvatarUrl || avatarUrl);
@@ -327,6 +329,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                     <div className="pc-status">{status}</div>
                   </div>
                 </div>
+
                 <button
                   className="pc-contact-btn"
                   onClick={onContactClick}
